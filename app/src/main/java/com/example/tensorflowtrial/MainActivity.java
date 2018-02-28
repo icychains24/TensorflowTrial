@@ -95,19 +95,19 @@ public class MainActivity extends Activity {
 
         int size=list.size();
 
-           final int[] INPUT_SIZE = {1,3};
+        final int[] INPUT_SIZE = {1,3};
 
         for(Email e : list){
             l.add(e.getSubject());
             b.add(e.getBody());
             fList.add(e.getAuthor());
-          dateList.add(e.getDateTime());
+            dateList.add(e.getDateTime());
 
-          //fullemaillist has subject and body..concatenate other details if needed.
-          fullEmailList.add(e.getSubject()+e.getBody());
+            //fullemaillist has subject and body..concatenate other details if needed.
+            fullEmailList.add(e.getSubject()+e.getBody());
         }
 
-        String s=fullEmailList.get(3).toString().trim();
+//        String s=fullEmailList.get(3).toString().trim();
 //        final byte[] bytearray1 = s.getBytes();
 
 //        System.out.println("byte array"+bytearray);
@@ -300,8 +300,8 @@ public class MainActivity extends Activity {
                         Intent i = new Intent(getApplicationContext(), com.example.tensorflowtrial.InfoActivity.class);
                         i.putExtra("body",b.get(position));
                         i.putExtra("subject", s.get(position));
-                      i.putExtra("from", fList.get(position));
-                      i.putExtra("date",dateList.get(position));
+                        i.putExtra("from", fList.get(position));
+                        i.putExtra("date",dateList.get(position));
                         // shreeya - PUT DATE, FROM TO , ETC HERE!!!!!!!!!
                         startActivity(i);
                     }
@@ -379,4 +379,3 @@ public class MainActivity extends Activity {
 
 
 }
-

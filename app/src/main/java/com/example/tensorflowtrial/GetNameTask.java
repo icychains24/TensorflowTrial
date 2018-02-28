@@ -152,7 +152,6 @@ public class GetNameTask extends AsyncTask<Void, Void, Void> {
             List<Message> testing = response.getMessages();
             for(Message test : testing){
                Long longdate= test.getInternalDate();
-
                 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
                 Calendar calendar = Calendar.getInstance();

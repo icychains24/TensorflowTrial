@@ -9,7 +9,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.tensorflowtrial.R;
+
 
 /**
  * Created by User on 4/29/2015.

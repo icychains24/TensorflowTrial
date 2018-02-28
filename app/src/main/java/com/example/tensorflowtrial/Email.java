@@ -1,6 +1,7 @@
 package com.example.tensorflowtrial;
 
-public class Email {
+public class
+Email {
     private long id;
     private String subject;
     private String body;
