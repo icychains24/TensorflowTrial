@@ -10,6 +10,7 @@ import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Trace;
 import android.preference.PreferenceManager;
@@ -31,11 +32,15 @@ import com.google.android.gms.common.AccountPicker;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import org.apache.commons.codec.binary.Hex;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.tensorflow.contrib.android.TensorFlowInferenceInterface;
 
 public class MainActivity extends Activity {
@@ -64,7 +69,7 @@ public class MainActivity extends Activity {
     private ArrayList<String> b;
     private ArrayList<String> dateList;
     private ArrayList<String> fList;
-    private ArrayList<String> fullEmailList;
+    public ArrayList<String> fullEmailList;
 
     static final int REQUEST_CODE_PICK_ACCOUNT = 1000;
     static final int REQUEST_CODE_RECOVER_FROM_AUTH_ERROR = 1001;
@@ -76,6 +81,20 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        AsyncTask<String, Void, String[]> ReturnArray= new AsynTaskRunner().execute("num1=siddhesh1");
+        try {
+
+            String returnArry[] = ReturnArray.get();
+            Log.d("assffegw",returnArry[0]+returnArry[1]);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        /***/
 
 //            inferenceInterface=new TensorFlowInferenceInterface(getAssets(),MODEL_FILE);
 
@@ -92,10 +111,6 @@ public class MainActivity extends Activity {
         fList = new ArrayList<String>();
         fullEmailList=new ArrayList<String>();
         List<Email> list = db.getAllBooks();
-
-        int size=list.size();
-
-        final int[] INPUT_SIZE = {1,3};
 
         for(Email e : list){
             l.add(e.getSubject());
